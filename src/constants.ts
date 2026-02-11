@@ -36,7 +36,7 @@ export const SHARE_LINKS: Social[] = [
 ] as const;
 
 export const GISCUS: GiscusProps = {
-  repo: "unan76/giscus",
+  repo: "junan76/giscus",
   repoId: "R_kgDOLc4zCQ",
   category: "Announcements",
   categoryId: "DIC_kwDOLc4zCc4CdyOk",
