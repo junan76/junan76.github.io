@@ -12,13 +12,19 @@ import { transformerFileName } from "./src/utils/transformers/fileName";
 import { SITE } from "./src/config";
 
 import react from "@astrojs/react";
+import mermaid from 'astro-mermaid';
 
 // https://astro.build/config
 export default defineConfig({
   site: SITE.website,
   integrations: [sitemap({
     filter: page => SITE.showArchives || !page.endsWith("/archives"),
-  }), react()],
+  }), react(),
+  mermaid({
+      theme: 'forest',
+      autoTheme: true
+    })  
+  ],
   markdown: {
     remarkPlugins: [remarkToc, [remarkCollapse, { test: "Table of contents" }]],
     shikiConfig: {

@@ -252,6 +252,8 @@ const nextPost =
         ? "top-(--file-name-offset)"
         : "-top-3";
 
+      if(codeBlock.className == "mermaid")
+        continue;
       const copyButton = document.createElement("button");
       copyButton.className = `copy-code absolute end-3 ${topClass} rounded bg-muted border border-muted px-2 py-1 text-xs leading-4 text-foreground font-medium`;
       copyButton.innerHTML = copyButtonLabel;
