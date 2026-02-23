@@ -36,6 +36,42 @@ HID驱动在linux内核中并不是孤立存在的, 它想要正常工作, 需�
 
 5. `hid-generic`执行`probe`, 继续向上层的`input`子系统注册`input_dev`;
 
+```mermaid
+sequenceDiagram
+    participant Hub_Driver as USB Hub 驱动
+    participant USB_Core as USB 核心/总线
+    participant usbhid as usbhid 驱动
+    participant HID_Core as HID 子系统/总线
+    participant hid_generic as hid-generic 驱动
+    participant Input_Core as Input 子系统
+
+    Note over Hub_Driver, USB_Core: 阶段 1: USB 设备枚举
+    Hub_Driver->>USB_Core: 感知新设备加入
+    USB_Core->>USB_Core: 创建 USB 设备结构
+    USB_Core->>USB_Core: 将设备加入 USB 总线
+
+    Note over USB_Core, usbhid: 阶段 2: USB 层匹配
+    USB_Core->>usbhid: 匹配 USB 设备 (Interface Class=HID)
+    activate usbhid
+    usbhid->>usbhid: 执行 probe()
+
+    Note over usbhid, HID_Core: 阶段 3: HID 设备创建与注册
+    usbhid->>HID_Core: 创建 hid_device 结构
+    usbhid->>HID_Core: 注册 HID 设备 (hid_register_device)
+    deactivate usbhid
+
+    Note over HID_Core, hid_generic: 阶段 4: HID 层匹配
+    HID_Core->>hid_generic: 匹配 HID 设备
+    activate hid_generic
+    hid_generic->>hid_generic: 执行 probe()
+
+    Note over hid_generic, Input_Core: 阶段 5: Input 设备注册
+    hid_generic->>Input_Core: 创建并注册 input_dev
+    deactivate hid_generic
+
+    Note over Input_Core: 用户空间可通过 /dev/input/eventX 访问
+```
+
 经过一层一层的的抽象, 上层应用已经不再关心数据是怎样通过USB总线传递过来的了, 最初的USB设备还在, 但上层应用只需要理解抽象的`input_dev`即可, USB设备驱动只需要处理好底层的数据传输, 我们甚至可以把真实的USB设备替换成软件模拟的虚拟设备.
 
 在[*内核文档*](https://docs.kernel.org/hid/hid-transport.html)中, 对HID驱动架构有专门的描述, 如下图所示:
@@ -71,4 +107,8 @@ Example Drivers:
   Transport: USB-HID, I2C-HID, BT-HIDP
 ```
 
-如果有新类型的IO Driver和Transport Driver需要支持, 可以很方便的添加到系统中; 在HID Core这一层内部, 实际上包含很多具有特定功能的模块, 比如`hidraw`, 可以让用户进程直接读取处理设备上报的原始数据, 或者通过向设备文件写入数据直接操作底层设备; 恰到好处的抽象, 合理的分层, 模块化, 让这部分代码具有很好的可维护性.
+如果有新类型的IO Driver和Transport Driver需要支持, 可以很方便的添加到系统中; 在HID Core这一层内部, 实际上包含很多具有特定功能的模块, 比如`hidraw`, 可以让用户进程直接读取处理设备上报的原始数据, 或者通过向设备文件写入数据直接操作底层设备.
+
+## 3. 总结
+
+恰到好处的抽象, 合理的分层, 模块化, 让这部分代码具有很好的可维护性.
