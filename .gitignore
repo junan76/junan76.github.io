@@ -1,0 +1,52 @@
+# ==========================================
+# Hugo 核心编译与临时文件
+# ==========================================
+# 默认的静态页面输出目录（执行 hugo 命令后生成）
+/public/
+/resources/_gen/
+/assets/jsconfig.json
+
+# 临时文件与缓存
+.hugo_build.lock
+numFiles.txt
+
+# ==========================================
+# 开发工具与操作系统文件
+# ==========================================
+# macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+Icon
+
+# Windows
+Thumbs.db
+Thumbs.db:encryptable
+ehthumbs.db
+ehthumbs_vista.db
+
+# IDE / 编辑器缓存
+.idea/
+.vscode/
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.swp
+
+# ==========================================
+# 依赖包与前端构建（如使用 PostCSS/Tailwind）
+# ==========================================
+node_modules/
+package-lock.json
+yarn.lock
+pnpm-lock.yaml
+.eslintcache
+
+# ==========================================
+# 隐私与部署凭证（非常重要！）
+# ==========================================
+# 包含 API 密钥、部署 Token 或私密环境变量的文件
+.env
+.env*.local
+*.pem

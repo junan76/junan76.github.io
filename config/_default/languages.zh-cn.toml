@@ -1,0 +1,23 @@
+disabled = false
+locale = "zh-cn"
+label = "简体中文"
+weight = 1
+title = "编程这点事儿"
+
+[params]
+displayName = "简体中文"    
+isoCode = "zh-cn"
+rtl = false
+dateFormat = "2006/01/02"
+logo = "img/avatar1.png"
+secondaryLogo = "img/avatar1.png"
+
+[[params.author.links]]
+github = "https://github.com/junan76"
+
+["params.author"]
+name = "junan"
+email = "junan76@foxmail.com"
+image = "img/avatar2.png"
+headline = "no fear of words, no fear of years."
+imageQuality = "100"
