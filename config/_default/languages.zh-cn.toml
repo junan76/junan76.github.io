@@ -15,6 +15,9 @@ secondaryLogo = "img/avatar1.png"
 [[params.author.links]]
 github = "https://github.com/junan76"
 
+[[params.author.links]]
+bilibili = "https://space.bilibili.com/258537970"
+
 ["params.author"]
 name = "junan"
 email = "junan76@foxmail.com"
