@@ -1,6 +1,6 @@
 ---
 title: 个人简历
-date: 2026-07-12
+date: 2026-08-07
 ---
 
 {{< typeit loop=true speed=120 >}}
