@@ -1,0 +1,16 @@
+{
+  "type": "module",
+  "scripts": {
+    "docs:dev": "vitepress dev",
+    "docs:build": "vitepress build",
+    "docs:preview": "vitepress preview"
+  },
+  "devDependencies": {
+    "@fontsource-variable/jetbrains-mono": "^5.3.0",
+    "@iconify-json/tabler": "^1.2.43",
+    "@iconify/utils": "^3.1.7",
+    "@types/node": "^26.6.6",
+    "vitepress": "^2.0.0-alpha.21",
+    "vitepress-sidebar": "^1.41.0"
+  }
+}

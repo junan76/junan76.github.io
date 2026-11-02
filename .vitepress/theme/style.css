@@ -1,0 +1,301 @@
+/**
+ * 工作台风格主题
+ * 默认主题变量参考：
+ * https://github.com/vuejs/vitepress/blob/main/src/client/theme-default/styles/vars.css
+ *
+ * 主色：琥珀橙；栏目辅色：Linux 绿 / FPV 橙红 / 3D 打印青。
+ * 浅色在 :root，深色在 .dark，组件只引用这些变量。
+ * -------------------------------------------------------------------------- */
+
+/**
+ * Colors: light
+ * -------------------------------------------------------------------------- */
+
+:root {
+  /* 主色。brand-3 是按钮底色，需要和白字保持足够对比度 */
+  --vp-c-brand-1: #c2410c;
+  --vp-c-brand-2: #9a3412;
+  --vp-c-brand-3: #c2410c;
+  --vp-c-brand-soft: rgba(234, 88, 12, 0.12);
+
+  /* 栏目色板：首页卡片按顺序依次取色，名字要和 .vitepress/icons.ts 里的 PALETTE 一致 */
+  --c-green: #15803d;
+  --c-green-soft: rgba(22, 163, 74, 0.12);
+  --c-rose: #e11d48;
+  --c-rose-soft: rgba(225, 29, 72, 0.1);
+  --c-cyan: #0e7490;
+  --c-cyan-soft: rgba(8, 145, 178, 0.12);
+  --c-violet: #7c3aed;
+  --c-violet-soft: rgba(124, 58, 237, 0.1);
+  --c-blue: #1d4ed8;
+  --c-blue-soft: rgba(37, 99, 235, 0.1);
+  --c-amber: #b45309;
+  --c-amber-soft: rgba(217, 119, 6, 0.12);
+  --c-pink: #be185d;
+  --c-pink-soft: rgba(219, 39, 119, 0.1);
+  --c-teal: #0f766e;
+  --c-teal-soft: rgba(13, 148, 136, 0.12);
+
+  /* 略偏暖的中性背景，像纸面 */
+  --vp-c-bg: #fdfcfa;
+  --vp-c-bg-alt: #f6f4f0;
+  --vp-c-bg-elv: #ffffff;
+  --vp-c-bg-soft: #f4f2ee;
+
+  /* 首页网格线 */
+  --c-grid-line: rgba(60, 50, 40, 0.07);
+}
+
+/**
+ * Colors: dark
+ * -------------------------------------------------------------------------- */
+
+.dark {
+  --vp-c-brand-1: #fb923c;
+  --vp-c-brand-2: #f97316;
+  --vp-c-brand-3: #c2410c;
+  --vp-c-brand-soft: rgba(251, 146, 60, 0.16);
+
+  --c-green: #4ade80;
+  --c-green-soft: rgba(74, 222, 128, 0.14);
+  --c-rose: #fb7185;
+  --c-rose-soft: rgba(251, 113, 133, 0.14);
+  --c-cyan: #22d3ee;
+  --c-cyan-soft: rgba(34, 211, 238, 0.14);
+  --c-violet: #a78bfa;
+  --c-violet-soft: rgba(167, 139, 250, 0.14);
+  --c-blue: #60a5fa;
+  --c-blue-soft: rgba(96, 165, 250, 0.14);
+  --c-amber: #fbbf24;
+  --c-amber-soft: rgba(251, 191, 36, 0.14);
+  --c-pink: #f472b6;
+  --c-pink-soft: rgba(244, 114, 182, 0.14);
+  --c-teal: #2dd4bf;
+  --c-teal-soft: rgba(45, 212, 191, 0.14);
+
+  /* 中性偏暖的深灰，不用默认的蓝调黑 */
+  --vp-c-bg: #18171a;
+  --vp-c-bg-alt: #121114;
+  --vp-c-bg-elv: #201f23;
+  --vp-c-bg-soft: #201f23;
+
+  --c-grid-line: rgba(255, 240, 225, 0.05);
+}
+
+/**
+ * Typography
+ * -------------------------------------------------------------------------- */
+
+:root {
+  --vp-font-family-base: 'Inter', ui-sans-serif, system-ui, -apple-system,
+    'PingFang SC', 'Hiragino Sans GB', 'Noto Sans CJK SC', 'Noto Sans SC',
+    'Microsoft YaHei', sans-serif;
+  --vp-font-family-mono: 'JetBrains Mono Variable', ui-monospace, 'SFMono-Regular',
+    'Menlo', 'Monaco', 'Consolas', monospace;
+}
+
+/* 导航栏站点名用等宽字体 */
+.VPNavBarTitle .title {
+  font-family: var(--vp-font-family-mono);
+  font-weight: 600;
+  letter-spacing: -0.02em;
+}
+
+/* 行内代码用主色 */
+.vp-doc :not(pre) > code {
+  color: var(--vp-c-brand-1);
+}
+
+/* 二级标题前加一段主色短线 */
+.vp-doc h2 {
+  position: relative;
+}
+.vp-doc h2::before {
+  content: '';
+  position: absolute;
+  left: -14px;
+  top: 32px; /* h2 默认 padding-top 24px + 半行高 */
+  width: 4px;
+  height: 18px;
+  border-radius: 2px;
+  background: var(--vp-c-brand-1);
+}
+@media (max-width: 767px) {
+  .vp-doc h2::before {
+    display: none;
+  }
+}
+
+/**
+ * Component: Button
+ * -------------------------------------------------------------------------- */
+
+.dark {
+  /* 深色下 brand-2 比 brand-3 亮，悬停时变亮更自然 */
+  --vp-button-brand-hover-bg: #ea580c;
+  --vp-button-brand-active-bg: #9a3412;
+}
+
+/**
+ * Component: Home
+ * -------------------------------------------------------------------------- */
+
+:root {
+  --vp-home-hero-name-color: var(--vp-c-brand-1);
+  --vp-home-hero-name-background: none;
+
+  --vp-home-hero-image-background-image: radial-gradient(
+    circle,
+    var(--vp-c-brand-soft) 0%,
+    transparent 70%
+  );
+  --vp-home-hero-image-filter: blur(24px);
+}
+
+/* 首页铺一层淡网格，像切割垫 / 打印平台，向下渐隐 */
+.VPHome {
+  position: relative;
+  isolation: isolate;
+}
+.VPHome::before {
+  content: '';
+  position: absolute;
+  inset: 0 0 auto 0;
+  height: 900px;
+  z-index: -1;
+  pointer-events: none;
+  background-image:
+    linear-gradient(var(--c-grid-line) 1px, transparent 1px),
+    linear-gradient(90deg, var(--c-grid-line) 1px, transparent 1px);
+  background-size: 24px 24px;
+  background-position: center top;
+  -webkit-mask-image: linear-gradient(to bottom, #000 0, #000 45%, transparent 100%);
+  mask-image: linear-gradient(to bottom, #000 0, #000 45%, transparent 100%);
+}
+
+/* 站点名：等宽字体 + 终端提示符 + 闪烁光标 */
+.VPHero .name {
+  font-family: var(--vp-font-family-mono);
+  letter-spacing: -0.03em;
+}
+.VPHero .name::before {
+  content: '~$ ';
+  color: var(--vp-c-text-3);
+  font-weight: 500;
+}
+.VPHero .name::after {
+  content: '';
+  display: inline-block;
+  width: 0.5em;
+  height: 0.9em;
+  margin-left: 0.08em;
+  vertical-align: -0.08em;
+  background: var(--vp-c-brand-1);
+  animation: cursor-blink 1.1s steps(1) infinite;
+}
+@keyframes cursor-blink {
+  50% {
+    opacity: 0;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .VPHero .name::after {
+    animation: none;
+  }
+}
+
+.VPHero .tagline {
+  font-family: var(--vp-font-family-mono);
+  font-size: 16px;
+}
+
+/* 栏目卡片：顶部色条 + 图标染色。
+ * 颜色按卡片顺序从色板里自动分配，也可以在 feature 上写 `color: violet` 指定。
+ * 扩充色板：在上面的 :root 和 .dark 里各加一对变量，在这里加一条规则，
+ * 再把名字加进 .vitepress/icons.ts 的 PALETTE。 */
+.VPFeatures .VPFeature:has([data-color='green']) { --card-c: var(--c-green); --card-soft: var(--c-green-soft); }
+.VPFeatures .VPFeature:has([data-color='rose']) { --card-c: var(--c-rose); --card-soft: var(--c-rose-soft); }
+.VPFeatures .VPFeature:has([data-color='cyan']) { --card-c: var(--c-cyan); --card-soft: var(--c-cyan-soft); }
+.VPFeatures .VPFeature:has([data-color='violet']) { --card-c: var(--c-violet); --card-soft: var(--c-violet-soft); }
+.VPFeatures .VPFeature:has([data-color='blue']) { --card-c: var(--c-blue); --card-soft: var(--c-blue-soft); }
+.VPFeatures .VPFeature:has([data-color='amber']) { --card-c: var(--c-amber); --card-soft: var(--c-amber-soft); }
+.VPFeatures .VPFeature:has([data-color='pink']) { --card-c: var(--c-pink); --card-soft: var(--c-pink-soft); }
+.VPFeatures .VPFeature:has([data-color='teal']) { --card-c: var(--c-teal); --card-soft: var(--c-teal-soft); }
+
+.VPFeatures .VPFeature {
+  position: relative;
+  overflow: hidden;
+  border-color: var(--vp-c-divider);
+  background-color: var(--vp-c-bg-elv);
+  transition: border-color 0.25s, transform 0.25s;
+}
+.VPFeatures .VPFeature::before {
+  content: '';
+  position: absolute;
+  inset: 0 0 auto 0;
+  height: 3px;
+  background: var(--card-c, var(--vp-c-brand-1));
+}
+.VPFeatures .VPFeature.link:hover {
+  border-color: var(--card-c, var(--vp-c-brand-1));
+  transform: translateY(-2px);
+}
+.VPFeatures .VPFeature .icon {
+  color: var(--card-c, var(--vp-c-brand-1));
+  background-color: var(--card-soft, var(--vp-c-brand-soft));
+}
+.VPFeatures .VPFeature .title {
+  font-family: var(--vp-font-family-mono);
+}
+.VPFeatures .VPFeature .link-text-value {
+  color: var(--card-c, var(--vp-c-brand-1));
+}
+
+/**
+ * 文章图片
+ * <figure> 居中并带图注；.gallery 让多张图并排；w-50 / w-33 限制单张图的宽度
+ * -------------------------------------------------------------------------- */
+
+.vp-doc figure {
+  margin: 24px auto;
+  text-align: center;
+}
+.vp-doc figure img {
+  margin: 0 auto;
+  border-radius: 6px;
+}
+.vp-doc figcaption {
+  margin-top: 8px;
+  font-family: var(--vp-font-family-mono);
+  font-size: 13px;
+  color: var(--vp-c-text-2);
+}
+.vp-doc figure.w-50 {
+  max-width: 50%;
+}
+.vp-doc figure.w-33 {
+  max-width: 33%;
+}
+
+.vp-doc .gallery {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+  gap: 16px;
+  margin: 24px 0;
+}
+.vp-doc .gallery figure {
+  margin: 0;
+}
+/* 并排的图尺寸不一，统一放进同样大小的框里 */
+.vp-doc .gallery img {
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  object-fit: contain;
+}
+
+@media (max-width: 640px) {
+  .vp-doc figure.w-50,
+  .vp-doc figure.w-33 {
+    max-width: 100%;
+  }
+}
