@@ -27,7 +27,7 @@ export default defineAdditionalConfig({
         sidebar: sidebarForLocale('zh'),
 
         editLink: {
-            pattern: 'https://github.com/junan76/junan76.github.io/edit/main/:path',
+            pattern: 'https://github.com/junan76/junan76.github.io/edit/main/docs/:path',
             text: '在 GitHub 上编辑此页面'
         },
 
