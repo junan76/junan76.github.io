@@ -26,10 +26,10 @@ export default defineAdditionalConfig({
         // 按 docs/zh/ 下的栏目目录自动生成，规则见 .vitepress/sidebar.ts
         sidebar: sidebarForLocale('zh'),
 
-        editLink: {
-            pattern: 'https://github.com/junan76/junan76.github.io/edit/main/docs/:path',
-            text: '在 GitHub 上编辑此页面'
-        },
+        // editLink: {
+        //     pattern: 'https://github.com/junan76/junan76.github.io/edit/main/docs/:path',
+        //     text: '在 GitHub 上编辑此页面'
+        // },
 
         footer: {
             message: '基于 MIT 许可发布',
