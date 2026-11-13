@@ -1,5 +1,5 @@
 ---
-title: gdb+kdb/kgdb调试内核
+title: gdb + kdb/kgdb 调试内核
 order: 3
 ---
 
